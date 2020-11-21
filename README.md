@@ -1,5 +1,7 @@
 # Nordic Energy Staking Pool
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7565685d-d830-481d-9775-a7ca3e994549/deploy-status)](https://app.netlify.com/sites/nordic-energy-staking-pool/deploys)
+
 This repository contains the UI for Nordic Energy's Staking Pool, which was built in Django. It also contains the Solidity smart Contract that represents each staking pool and the Truffle code to deploy it.
 
 ## Requirements
