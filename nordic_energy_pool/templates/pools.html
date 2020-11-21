@@ -1,0 +1,493 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>nordic_energy - Staking Pools 2.0</title>
+    <meta content="nordic_energy-pool" name="keywords">
+    <meta content="nordic_energy-pool - Staking Pool" name="description">
+    <meta content="nordic_energy-pool" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Font CSS (Via CDN) -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="{% static 'css/assets/skin/default_skin/css/theme.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="{% static 'css/vendor/plugins/bstour/bootstrap-tour.css' %}" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.nordic_energy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
+    <script type="text/javascript" src="{% static 'js/pnglib.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/identicon.js' %}"></script>
+    <link rel="shortcut icon" href="https://nordic_energy.io/img/favicon-32x32.png" />
+</head>
+
+<body class="dashboard-page sb-l-o sb-r-c sb-top" style="min-height: 0px!important;">
+    <!-- Start: Main -->
+    <div id="main" style="min-height: 0px!important;">
+        <!-- Start: Header -->
+        <header class="navbar navbar-fixed-top" style="background-color: #051a2d">
+            <div class="navbar-branding" style="background-color: #b38f00 !important;text-align: center">
+                <img style="height:60px;" src="{% static 'images/nordic_energy_logo.png' %}" title="nordic_energy">
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="margin-top: 14px!important;color: lightgrey;margin-left: 25px!important">
+                    <p><img style="padding-bottom: 3px" alt="avatar" class="mw30 br64 identicon mr10" src="{% static 'images/ether.png' %}"> <span class="account">Unlock your wallet</span></p>
+                </li>
+            </ul>
+        </header>
+        <!-- End: Header -->
+        <!-- Start: Sidebar -->
+        <aside class="nano nano-success affix sidebar-light" id="sidebar_left">
+            <div class="nano-content">
+                <!-- sidebar menu -->
+                <ul class="nav sidebar-menu">
+                    <li class="sidebar-label pt20">Management</li>
+                    <li class="active">
+                        <a class="accordion-toggle menu-open" href="/pools/"><span class="fa fa-users"></span> <span class="sidebar-title">Pool Staking</span> <span class="label label-rounded label-success">2</span></a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="/nordic_energy-pool/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> nordic_energy Pool
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/nordic_energy-pool2/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> nordic_energy Pool 2
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/balances/"><span class="glyphicon glyphicon-usd"></span> <span class="sidebar-title">Balances</span></a>
+                    </li>
+                    <li>
+                        <a href="/history/"><span class="glyphicon glyphicon-list-alt"></span> <span class="sidebar-title">History</span></a>
+                    </li>
+                    <li class="sidebar-label pt20">Information</li>
+                    <li>
+                        <a target="_blank" href="https://medium.com/nordic_energy-blog/getting-started-with-nordic_energy-pool-staking-how-to-deposit-733ff18cb8f3"><span class="glyphicon glyphicon-info-sign"></span> <span class="sidebar-title">Staking Deposit Tutorial</span></a>
+                    </li>
+                    <li>
+                        <a href="/faq/"><span class="glyphicon glyphicon-question-sign"></span> <span class="sidebar-title">F.A.Q.</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Start: Content-Wrapper -->
+        <!-- Start: Content-Wrapper -->
+        <section id="content_wrapper">
+            <header class="hidden-xs" id="topbar">
+                <div class="topbar-left">
+                    <ol class="breadcrumb">
+                        <li class="crumb-active">
+                            <a href="/">Pool Staking</a>
+                        </li>
+                    </ol>
+                </div>
+            </header>
+            <!-- Begin: Content -->
+            <section class="table-layout animated fadeIn" id="content">
+                <!-- begin: .tray-center -->
+                <div class="tray tray-center p20 va-t posr">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-visible" id="spy2">
+                                <div class="panel-heading">
+                                    <div class="panel-title hidden-xs">
+                                        Pools
+                                    </div>
+                                </div>
+                                <div class="panel-body pn">
+                                    <table cellspacing="0" class="table table-striped table-hover" id="datatable" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Address</th>
+                                                <th>Stakers</th>
+                                                <th>Total Stakes</th>
+                                                <th>Total Staked</th>
+                                                <th>Fee</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="fa fa-users mr10"></span>
+                                                    <a href="/nordic_energy-pool/">nordic_energy Pool</a>
+                                                </td>
+                                                <td>
+                                                    <img class="mr10" style="height: 16px;vertical-align: text-bottom;" src="https://etherscan.io/images/favicon2.ico" />
+                                                    <a target="_blank" href="https://etherscan.io/address/{{ contractAddress }}">{{ contractAddress }}</a>
+                                                </td>
+                                                <td class="totalStakers"><img src="{% static 'images/loading.svg' %}" /></td>
+                                                <td class="totalStakes"><img src="{% static 'images/loading.svg' %}" /></td>
+                                                <td>
+                                                    <a class="totalStaked" target="_blank" href="https://etherscan.io/token/0x763fa6806e1acf68130d2d0f0df754c93cc546b2"><img src="{% static 'images/loading.svg' %}" /></a>
+                                                </td>
+                                                <td>5%</td>
+                                                <td>
+                                                    <div class="btn-group text-right" style="padding-top: 5px!important;">
+                                                        <label aria-expanded="false" class="btn-success br2 btn-xs fs12">Active</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a style="background-color: steelblue;padding: 5px;padding-left: 10px;padding-right: 10px;" href="/nordic_energy-pool/deposit/" class="btn btn-info mr10"><i class="fa fa-plus mr10"></i>New Deposit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="fa fa-users mr10"></span>
+                                                    <a href="/nordic_energy-pool2/">nordic_energy Pool 2</a>
+                                                </td>
+                                                <td>
+                                                    <img class="mr10" style="height: 16px;vertical-align: text-bottom;" src="https://etherscan.io/images/favicon2.ico" />
+                                                    <a target="_blank" href="https://etherscan.io/address/{{ contractAddress2 }}">{{ contractAddress2 }}</a>
+                                                </td>
+                                                <td class="totalStakers2"><img src="{% static 'images/loading.svg' %}" /></td>
+                                                <td class="totalStakes2"><img src="{% static 'images/loading.svg' %}" /></td>
+                                                <td>
+                                                    <a class="totalStaked2" target="_blank" href="https://etherscan.io/token/0x763fa6806e1acf68130d2d0f0df754c93cc546b2"><img src="{% static 'images/loading.svg' %}" /></a>
+                                                </td>
+                                                <td>5%</td>
+                                                <td>
+                                                    <div class="btn-group text-right" style="padding-top: 5px!important;">
+                                                        <label aria-expanded="false" class="btn-success br2 btn-xs fs12">Active</label>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a style="background-color: steelblue;padding: 5px;padding-left: 10px;padding-right: 10px;" href="/nordic_energy-pool2/deposit/" class="btn btn-info mr10"><i class="fa fa-plus mr10"></i>New Deposit</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert mb20">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <figure class="highcharts-figure">
+                                    <div id="container"></div>
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                <figure class="highcharts-figure">
+                                    <div id="container2"></div>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="row mt20">
+                            <div class="col-md-12">
+                                <figure class="highcharts-figure">
+                                    <div id="container3"></div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </section>
+    </div>
+
+    <script src="{% static 'js/abi.js' %}" type="text/javascript">
+    </script>
+
+    <script src="{% static 'js/abi2.js' %}" type="text/javascript">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+
+    <script type="text/javascript">
+        function loadRewards(wallet) {
+            $.ajax({
+                    headers: {
+                        "X-CSRFToken": getCookie("csrftoken")
+                    },
+                    url: '/ajax_user_rewards/' + wallet,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    method: 'POST',
+                })
+                .done(function(data) {
+                    $('#container2').highcharts({
+                        title: {
+                            text: 'Your last rewards per day'
+                        },
+
+                        credits: {
+                            enabled: false
+                        },
+
+                        colors: ['#e6b800', '#cca300', '#665200', '#b3b3b3'],
+
+                        xAxis: {
+                            categories: data.dates,
+                        },
+
+                        yAxis: {
+                            title: ""
+                        },
+
+                        tooltip: {
+                            formatter: function() {
+                                return this.point.y.toLocaleString() + ' NET';
+                            }
+                        },
+
+                        series: [{
+                            type: 'column',
+                            data: data.values,
+                            showInLegend: false,
+                        }]
+                    });
+
+                });
+        }
+
+        if (typeof window.ethereum !== 'undefined') {
+            window.ethereum.enable();
+            const web3 = new Web3(window.ethereum);
+            web3.eth.getAccounts((err, accounts) => {
+                if (err) {
+                    throw err;
+                }
+                if (accounts.length == 0) {
+                    console.log('Locked');
+                } else {
+                    document.getElementsByClassName('account')[0].innerHTML = accounts[0].substring(0, 6) + '...' + accounts[0].substring(38, 42);
+                    const data = new Identicon(accounts[0]).toString();
+                    document.getElementsByClassName('identicon')[0].setAttribute('src', 'data:image/png;base64,' + data);
+                    loadRewards(accounts[0]);
+                }
+            });
+        } else {
+            console.log('Unavailable');
+        }
+
+        const zerosPadding = 1000000000000000000;
+
+        function parseParamToNET(total) {
+            const totalInt = total.toString(10);
+            return totalInt / zerosPadding;
+        }
+
+        function parseNET(total) {
+            return parseFloat(total.toLocaleString());
+        }
+
+        function divideAndParseParamToNET(total, totalStaked) {
+            return parseFloat((total / totalStaked * 100 / zerosPadding).toLocaleString());
+        }
+
+        function drawPie(total) {
+            $('#container').highcharts({
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45
+                    },
+                },
+
+                title: {
+                    text: 'nordic_energy'
+                },
+                subtitle: {
+                    text: 'Tokens distribution'
+                },
+                tooltip: {
+                    pointFormat: '{point.percentage:.1f} %<br>Total: {point.y} NET'
+                },
+                plotOptions: {
+                    pie: {
+                        innerSize: 100,
+                        depth: 45,
+                        colors: ['#e6b800', '#cca300', '#665200', '#b3b3b3']
+                    }
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'NET',
+                    animation: {
+                        duration: 2000
+                    },
+                    data: [
+                        ['Staked', total],
+                        ['Total Supply', 60299210],
+                    ]
+                }]
+            });
+        }
+
+        $('#container3').highcharts({
+            title: {
+                text: 'Accumulated rewards per day in all staking pools'
+            },
+
+            legend: {
+                enabled: false
+            },
+
+            tooltip: {
+                formatter: function() {
+                    return this.point.y.toLocaleString() + ' NET';
+                }
+            },
+
+            colors: ['#b3b3b3', '#cca300', '#665200', '#e6b800'],
+
+            credits: {
+                enabled: false
+            },
+
+            xAxis: {
+                type: 'datetime',
+                categories: [{ %
+                        for da in accumulated %
+                    }
+                    '{{ da.date }}', { % endfor %
+                    }
+                ],
+            },
+
+            yAxis: {
+                title: ""
+            },
+
+            series: [{
+                type: 'spline',
+                name: '',
+                data: [{ %
+                        for da in accumulated %
+                    }
+                    parseParamToNET({
+                        {
+                            da.miningRewards
+                        }
+                    }), { % endfor %
+                    }
+                ],
+                marker: {
+                    lineWidth: 2,
+                    lineColor: Highcharts.getOptions().colors[4],
+                    fillColor: 'white'
+                }
+            }]
+        });
+
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=");
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1;
+                    c_end = document.cookie.indexOf(";", c_start);
+                    if (c_end == -1) c_end = document.cookie.length;
+                    return unescape(document.cookie.substring(c_start, c_end));
+                }
+            }
+            return "";
+        }
+
+        const web3 = new Web3(window.ethereum);
+        const MyContract = web3.eth.contract(JSON.parse(contractInfoAbi));
+        const contractAddress = '{{ contractAddress }}';
+        const contractInstance = MyContract.at(contractAddress);
+
+        const MyContract2 = web3.eth.contract(JSON.parse(contractInfoAbi2));
+        const contractAddress2 = '{{ contractAddress2 }}';
+        const contractInstance2 = MyContract.at(contractAddress2);
+
+        function addMilesSeparator(num) {
+            return num.toLocaleString();
+        }
+
+        let totalStaked = 0;
+
+        function updateValues() {
+            contractInstance.getTotalStakers({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                    document.getElementsByClassName('totalStakers')[0].innerHTML = '0';
+                } else {
+                    document.getElementsByClassName('totalStakers')[0].innerHTML = data;
+                }
+            });
+
+            contractInstance.getTotalStakes({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                    document.getElementsByClassName('totalStakes')[0].innerHTML = '0';
+                } else {
+                    document.getElementsByClassName('totalStakes')[0].innerHTML = data;
+                }
+            });
+
+
+            contractInstance.getTotalInStake({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    const total = parseInt(data.toString(10));
+                    const zerosPadding = 1000000000000000000;
+                    const totalInNET = total / zerosPadding;
+                    document.getElementsByClassName('totalStaked')[0].innerHTML = addMilesSeparator(parseInt(totalInNET.toString().spNET('.')[0])) + ' NET';
+                    totalStaked += totalInNET;
+                    setTimeout(drawPie(totalStaked), 1000);
+                }
+            });
+        }
+
+        function updateValues2() {
+            contractInstance2.getTotalStakers({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                    document.getElementsByClassName('totalStakers2')[0].innerHTML = '0';
+                } else {
+                    document.getElementsByClassName('totalStakers2')[0].innerHTML = data;
+                }
+            });
+
+            contractInstance2.getTotalStakes({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                    document.getElementsByClassName('totalStakes2')[0].innerHTML = '0';
+                } else {
+                    document.getElementsByClassName('totalStakes2')[0].innerHTML = data;
+                }
+            });
+
+            contractInstance2.getTotalInStake({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    const total = parseInt(data.toString(10));
+                    const zerosPadding = 1000000000000000000;
+                    const totalInNET = total / zerosPadding;
+                    document.getElementsByClassName('totalStaked2')[0].innerHTML = addMilesSeparator(parseInt(totalInNET.toString().spNET('.')[0])) + ' NET';
+                    totalStaked += totalInNET;
+                    setTimeout(drawPie(totalStaked), 1000);
+                }
+            });
+        }
+
+        updateValues();
+        updateValues2();
+    </script>
+</body>
+
+</html>

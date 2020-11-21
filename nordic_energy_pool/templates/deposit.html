@@ -1,0 +1,308 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Nordic Energy - Staking Pools 2.0</title>
+    <meta content="nordic_energy-pool" name="keywords">
+    <meta content="nordic_energy-pool - Staking Pool" name="description">
+    <meta content="nordic_energy-pool" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Font CSS (Via CDN) -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="{% static 'css/assets/skin/default_skin/css/theme.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="{% static 'css/vendor/plugins/bstour/bootstrap-tour.css' %}" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://staking.nordicenergy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
+    <script type="text/javascript" src="{% static 'js/pnglib.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/identicon.js' %}"></script>
+    <link rel="shortcut icon" href="https://staking.nordicenergy.io/img/favicon-32x32.png" />
+</head>
+
+<body class="dashboard-page sb-l-o sb-r-c sb-top" style="min-height: 0px!important;">
+    <!-- Start: Main -->
+    <div id="main" style="min-height: 0px!important;">
+        <!-- Start: Header -->
+        <header class="navbar navbar-fixed-top" style="background-color: #051a2d">
+            <div class="navbar-branding" style="background-color: #b38f00 !important;text-align: center">
+                <img style="height:60px;" src="{% static 'images/nordic_energy_logo.png' %}" title="nordic_energy">
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li style="margin-top: 14px!important;color: lightgrey;margin-left: 25px!important">
+                    <p><img style="padding-bottom: 3px" alt="avatar" class="mw30 br64 identicon mr10" src="{% static 'images/ether.png' %}"> <span class="account">Unlock your wallet</span></p>
+                </li>
+            </ul>
+        </header>
+        <!-- End: Header -->
+        <!-- Start: Sidebar -->
+        <aside class="nano nano-success affix sidebar-light" id="sidebar_left">
+            <div class="nano-content">
+                <!-- sidebar menu -->
+                <ul class="nav sidebar-menu">
+                    <li class="sidebar-label pt20">Management</li>
+                    <li>
+                        <a class="accordion-toggle menu-open" href="/pools/"><span class="fa fa-users"></span> <span class="sidebar-title">Pool Staking</span> <span class="label label-rounded label-success">2</span></a>
+                        <ul class="nav sub-nav">
+                            <li class="active">
+                                <a href="/nordic_energy-pool/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> Nordic Energy Pool
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/nordic_energy-pool2/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> Nordic Energy Pool 2
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/balances/"><span class="glyphicon glyphicon-usd"></span> <span class="sidebar-title">Balances</span></a>
+                    </li>
+                    <li>
+                        <a href="/history/"><span class="glyphicon glyphicon-list-alt"></span> <span class="sidebar-title">History</span></a>
+                    </li>
+                    <li class="sidebar-label pt20">Information</li>
+                    <li>
+                        <a target="_blank" href="https://medium.com/nordic_energy-blog/getting-started-with-nordic_energy-pool-staking-how-to-deposit-733ff18cb8f3"><span class="glyphicon glyphicon-info-sign"></span> <span class="sidebar-title">Staking Deposit Tutorial</span></a>
+                    </li>
+                    <li>
+                        <a href="/faq/"><span class="glyphicon glyphicon-question-sign"></span> <span class="sidebar-title">F.A.Q.</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Start: Content-Wrapper -->
+        <!-- Start: Content-Wrapper -->
+        <section id="content_wrapper">
+            <header class="hidden-xs" id="topbar">
+                <div class="topbar-left">
+                    <ol class="breadcrumb">
+                        <li class="crumb-active">
+                            <a href="/">Pool Staking</a>
+                        </li>
+                        <li class="crumb-trail">
+                            {% if 'nordic_energy-pool/' in request.path %}
+                            <a href="/nordic_energy-pool/">Nordic Energy Pool</a> {% else %}
+                            <a href="/nordic_energy-pool2/">Nordic Energy Pool 2</a> {% endif %}
+                        </li>
+                        <li class="crumb-trail">
+                            {% if 'nordic_energy-pool/' in request.path %}
+                            <a href="/nordic_energy-pool/deposit/">Deposit</a> {% else %}
+                            <a href="/nordic_energy-pool2/deposit/">Deposit</a> {% endif %}
+                        </li>
+                    </ol>
+                </div>
+            </header>
+            <!-- Begin: Content -->
+            <section class="table-layout animated fadeIn" id="content">
+                <!-- begin: .tray-center -->
+                <div class="tray tray-center p20 va-t posr">
+                    <div class="alert alert-default mb20 form">
+                        <h3 class="mt5">Start new staking:</h3>
+                        <p>Participate in Nordic Energy's staking pool</p><br>
+
+                        <div class="row">
+                            <div class="text-left form-group-md mb20 col-md-12">
+                                <input class="form-control" id="txtAmount" maxlength="20" name="title" placeholder="Amount in NET (Minimum 5000)" required="required" type="text">
+                                <br/>
+                                <label class="control-label mb10" for="formGroupInputSmall" style="padding-top: 0">Lockup Period:</label><br/>
+                                <select class="form-control" id="cmbLockup" onchange="javascript:checkFinishDate()">
+                                    <option value="1">
+                                        1 month (at the end of next month), 1.2x rewards
+                                    </option>
+                                    <option value="3">
+                                        3 months (at the end of the third month), 1.4x rewards
+                                    </option>
+                                    <option value="6">
+                                        6 months (at the end of the sixth month), 1.6x rewards
+                                    </option>
+                                    <option value="12">
+                                        12 months (at the end of the twelfth month), 1.8x rewards
+                                    </option>
+                                </select>
+                                <p class="mb20 mt10 finish" style="color:grey;font-size: 12px;"></p>
+                                <input style="margin-right:5px;vertical-align: top" id="chkCompound" maxlength="20" name="title" type="checkbox">
+                                <span class="control-label mb10" for="formGroupInputSmall" style="padding-top: 0">Compound earned stake rewards</span><br/>
+                            </div>
+                        </div><br/>
+                        <p class="mb20 error" style="color:red;display: none"></p>
+                        <p><a style="background-color: steelblue" class="btn btn-primary mr10 deposit" href="javascript:checkAllowance()">Deposit tokens</a></p>
+                    </div>
+
+                </div>
+            </section>
+            <!-- End: Content -->
+        </section>
+    </div>
+    <!-- End: Main -->
+
+    <script type="text/javascript">
+        if (typeof window.ethereum !== 'undefined') {
+            window.ethereum.enable();
+            const web3 = new Web3(window.ethereum);
+            web3.eth.getAccounts((err, accounts) => {
+                if (err) {
+                    throw err;
+                }
+                if (accounts.length == 0) {
+                    console.log('Locked');
+                } else {
+                    document.getElementsByClassName('account')[0].innerHTML = accounts[0].substring(0, 6) + '...' + accounts[0].substring(38, 42);
+                    const data = new Identicon(accounts[0]).toString();
+                    document.getElementsByClassName('identicon')[0].setAttribute('src', 'data:image/png;base64,' + data);
+                }
+            });
+        } else {
+            console.log('Unavailable');
+        }
+    </script>
+
+    <script src="{% static 'js/abi.js' %}"></script>
+    <script src="{% static 'js/token_abi.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        const web3 = new Web3(window.ethereum);
+        const MyTokenContract = web3.eth.contract(JSON.parse(tokenInfoAbi));
+        const tokenContractAddress = '{{ tokenAddress }}';
+        const tokenContractInstance = MyTokenContract.at(tokenContractAddress);
+        const zerosPadding = '000000000000000000';
+
+        function checkAllowance() {
+            if (isNaN(parseInt($('#txtAmount').val()))) {
+                alert('Please complete a valid NET amount');
+                return;
+            }
+            if (parseInt($('#txtAmount').val()) < 5000) {
+                alert('You must stake at least 5000 NET');
+                return;
+            }
+
+            const amount = $('#txtAmount').val() + zerosPadding;
+
+            tokenContractInstance.allowance(web3.eth.accounts[0], '{{ contractAddress }}', {}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                    alert('An error occurred, please try again: ' + JSON.stringify(err));
+                }
+                console.log('Allowance: ', data.toString(10));
+                if (parseInt(data.toString(10)) >= amount) {
+                    deposit();
+                } else {
+                    alert('You need to approve the nordic_energyPool contract to manage your NET tokens');
+                    approve();
+                }
+            });
+        }
+
+        function approve() {
+            const amount = $('#txtAmount').val() + zerosPadding;
+            tokenContractInstance.approve("{{ contractAddress }}", amount, {}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                    alert('An error occurred, please try again: ' + JSON.stringify(err));
+                } else {
+                    alert('Please wait until the approval transaction is mined');
+                }
+            });
+        }
+
+        const MyContract = web3.eth.contract(JSON.parse(contractInfoAbi));
+        const contractAddress = '{{ contractAddress }}';
+        const contractInstance = MyContract.at(contractAddress);
+
+        function deposit() {
+            if (isNaN(parseInt($('#txtAmount').val()))) {
+                alert('Please complete a valid NET amount');
+                return;
+            }
+            if (parseInt($('#txtAmount').val()) < 5000) {
+                alert('You must stake at least 5000 NET');
+                return;
+            }
+
+
+            $(".btn").attr("disabled", 'disabled');
+            $(".form :input").prop("disabled", true);
+
+            const amount = $('#txtAmount').val() + zerosPadding;
+            const lockup = parseInt($('#cmbLockup').val());
+            const compound = $('#chkCompound').is(':checked');
+
+            contractInstance.createNewStake.estimateGas(amount, lockup, compound, function(err, data) {
+
+                let gas = '900000';
+
+                if (!err) {
+                    gas = (data * 1.5).toString();
+                }
+
+                contractInstance.createNewStake(amount, lockup, compound, {
+                    gas: gas,
+                    gasPrice: "7000000000"
+                }, function(err, data) {
+                    if (err) {
+                        $(".btn").removeAttr("disabled");
+                        $(".form :input").prop("disabled", false);
+
+                        console.log(err);
+
+                        alert('An error occurred. Verify that you approved the contract to manage your tokens and that you are sending at least 5000 NET: ' + JSON.stringify(err));
+                    } else {
+                        alert('Please wait until the deposit transaction is mined');
+                    }
+                });
+
+            });
+        }
+
+        function timeConverter(UNIX_timestamp) {
+            var a = new Date(UNIX_timestamp * 1000);
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var year = a.getFullYear();
+            var month = months[a.getMonth()];
+            var date = a.getDate();
+            var time = date + ' ' + month + ' ' + year;
+            return time;
+        }
+
+        function checkFinishDate() {
+            const now = Math.round(new Date().getTime() / 1000);
+            const lockup = parseInt($('#cmbLockup').val());
+            contractInstance.calculateFinishTimestamp(now, lockup, {}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                }
+
+                if (data) {
+                    const finishDate = timeConverter(parseInt(data.toString(10)));
+                    $('.finish').html('Your lockup period will finish on ' + finishDate);
+                }
+            });
+        }
+
+        checkFinishDate();
+
+        function checkPaused() {
+            contractInstance.paused({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                }
+
+                if (data) {
+                    $(".btn").attr("disabled", 'disabled');
+                    $(".form :input").prop("disabled", true);
+                }
+            });
+        }
+
+        checkPaused();
+    </script>
+</body>
+
+</html>

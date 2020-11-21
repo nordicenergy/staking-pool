@@ -1,0 +1,229 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>nordic_energy - Staking Pools 2.0</title>
+    <meta content="nordic_energy-pool" name="keywords">
+    <meta content="nordic_energy-pool - Staking Pool" name="description">
+    <meta content="nordic_energy-pool" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Font CSS (Via CDN) -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="{% static 'css/assets/skin/default_skin/css/theme.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="{% static 'css/vendor/plugins/bstour/bootstrap-tour.css' %}" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://www.nordic_energy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
+    <link rel="shortcut icon" href="https://nordic_energy.io/img/favicon-32x32.png" />
+    <style>
+        .gn {
+            font-size: medium;
+        }
+        
+        .alert>p {
+            margin-top: 10px!important;
+        }
+    </style>
+</head>
+
+<body class="dashboard-page sb-l-o sb-r-c sb-top" style="min-height: 0px!important;">
+    <!-- Start: Main -->
+    <div id="main" style="min-height: 0px!important;">
+        <!-- Start: Header -->
+        <header class="navbar navbar-fixed-top" style="background-color: #051a2d">
+            <div class="navbar-branding" style="background-color: #b38f00 !important;text-align: center">
+                <img style="height:60px;" src="{% static 'images/nordic_energy_logo.png' %}" title="nordic_energy">
+            </div>
+        </header>
+        <!-- End: Header -->
+        <!-- Start: Sidebar -->
+        <aside class="nano nano-success affix sidebar-light" id="sidebar_left">
+            <div class="nano-content">
+                <!-- sidebar menu -->
+                <ul class="nav sidebar-menu">
+                    <li class="sidebar-label pt20">Management</li>
+                    <li>
+                        <a class="accordion-toggle menu-open" href="/pools/"><span class="fa fa-users"></span> <span class="sidebar-title">Pool Staking</span> <span class="label label-rounded label-success">2</span></a>
+                        <ul class="nav sub-nav">
+                            <li>
+                                <a href="/nordic_energy-pool/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> nordic_energy Pool
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/nordic_energy-pool2/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> nordic_energy Pool 2
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/balances/"><span class="glyphicon glyphicon-usd"></span> <span class="sidebar-title">Balances</span></a>
+                    </li>
+                    <li>
+                        <a href="/history/"><span class="glyphicon glyphicon-list-alt"></span> <span class="sidebar-title">History</span></a>
+                    </li>
+                    <li class="sidebar-label pt20">Information</li>
+                    <li>
+                        <a target="_blank" href="https://medium.com/nordic_energy-blog/getting-started-with-nordic_energy-pool-staking-how-to-deposit-733ff18cb8f3"><span class="glyphicon glyphicon-info-sign"></span> <span class="sidebar-title">Staking Deposit Tutorial</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="/faq/"><span class="glyphicon glyphicon-question-sign"></span> <span class="sidebar-title">F.A.Q.</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Start: Content-Wrapper -->
+        <!-- Start: Content-Wrapper -->
+        <section id="content_wrapper">
+            <header class="hidden-xs" id="topbar">
+                <div class="topbar-left">
+                    <ol class="breadcrumb">
+                        <li class="crumb-active">
+                            <a href="/faq/">F.A.Q.</a>
+                        </li>
+                    </ol>
+                </div>
+            </header>
+            <!-- Begin: Content -->
+            <section class="table-layout animated fadeIn" id="content">
+                <!-- begin: .tray-center -->
+                <div class="tray tray-center p20 va-t posr">
+                    <div class="alert alert-default mb20" style="padding-left: 30px;">
+
+                        <p><b>Q : What is nordic_energy Pool Staking (LPS)?</b></p>
+                        <p>The nordic_energy Foundation is running validator nodes on behalf of anyone that wants to participate in the network without going through the trouble of setting up and maintaining their own server.</p>
+
+                        <p>The longer the lock-up period, the higher the rewards.</p>
+
+                        <p><b>Q : What is the minimum amount required to stake?</b></p>
+
+                        <p>5000 tokens</p>
+
+                        <p><b>Q : How do I get started?</b></p>
+
+                        <p>You’ll need to send your tokens to the LPS Smart contract through a dedicated web application at Staking.nordic_energy.io</p>
+
+                        <p>Please see our <a href="https://medium.com/nordic_energy-blog/getting-started-with-nordic_energy-pool-staking-how-to-deposit-733ff18cb8f3">deposit tutorial</a></p>
+
+                        <p><b>Q : How much will I earn?</b></p>
+
+                        <p>Rewards are not fixed. They are dependent on the number of sidechain transactions, total number of users staking, and the lockup period chosen.</p>
+
+                        <p><i>Tip: The best way to estimate current returns is to ask other members of the community who are actively staking: <a href="https://t.me/nordic_energystaking">Official nordic_energy Staking Channel</a></i></p>
+
+                        <p><b>Q : What are my options for lock-up periods?</b></p>
+
+                        <p>There are 4 lock-up options to choose from:</p>
+                        <p>1 Month = 1.2 Reward Factor</p>
+                        <p>3 Months = 1.4 Reward Factor</p>
+                        <p>6 Months = 1.6 Reward Factor</p>
+                        <p>12 Months = 1.8 Reward Factor</p>
+
+                        <p><b>Q : What are reward factors?</b></p>
+
+                        <p>Reward factors are bonus multipliers for the genesis phase of staking. Your stake receives its share of nordic_energy from the sidechain transactions multiplied by 1.2, 1.4, 1.6 or 1.8.</p>
+
+                        <p><b>Q : What is the Genesis Phase?</b></p>
+
+                        <p>The Genesis Phase is an initial period of incentivized adoption. During this time, the revenue flow from transactions are multiplied by reward factors to increase incentives for nordic_energy token holders to stake during the early
+                            stages of the project.</p>
+
+                        <p><b>Q : How long will the Genesis Phase last?</b></p>
+
+                        <p>TBD</p>
+
+                        <p><b>Q : What does it mean to compound earned staking rewards?</b></p>
+
+                        <p>If you elect to compound, your daily earned staking rewards are automatically reinvested back into your stake.</p>
+
+                        <p><b>Q : How often are rewards paid?</b></p>
+
+                        <p>Staking rewards are distributed roughly every 24 hours</p>
+
+                        <p><b>Q : How do I view my daily rewards?</b></p>
+
+                        <p>You’ll find earned rewards in the “Balances” section of the staking website under “Pending Rewards”. These rewards will move to “Rewards Accredited” once they are eligible to be withdrawn.</p>
+
+                        <p>You can also view a history of accredited rewards under the “History” section.</p>
+
+                        <p><b>Q : When can I withdraw my rewards?</b></p>
+
+                        <p>Compounding False: At the end of each month.</p>
+                        <p>Compounding True: At the end of your chosen lock-up period.</p>
+
+                        <p><b>Q : What if I’m having trouble making a deposit?</b></p>
+
+                        <p><a href="https://medium.com/nordic_energy-blog/getting-started-with-nordic_energy-pool-staking-how-to-deposit-733ff18cb8f3">LPS Deposit Tutorial</a></p>
+                        <p><a href="https://t.me/nordic_energystaking">Staking Telegram Channel</a></p>
+
+                        <p><b>Q : Is it necessary to use Metamask?</b></p>
+
+                        <p>Yes, nordic_energy Pool Staking should be used with Metamask only.</p>
+
+                        <p><b>Q : Why can’t I see my nordic_energy tokens in Metamask?</b></p>
+
+                        <p>You’ll need to add nordic_energy as a custom token: <a href="https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-View-Your-Tokens">Instructions</a></p>
+                        <p>Token Contract Address: <i>0x763Fa6806e1acf68130D2D0f0df754C93cC546B2</i></p>
+                        <p>Token Symbol: NET</p>
+                        <p>Decimals: 18</p>
+
+                        <p><b>Q : Can I stake with my Hardware Wallet?</b></p>
+
+                        <p>You’ll need to use Metamask to interact with the LPS smart contract. However, you can sign your transactions in Metamask with a hardware wallet.</p>
+
+                        <p><a href="https://metamask.zendesk.com/hc/en-us/articles/360020394612-How-to-connect-a-Trezor-or-Ledger-Hardware-Wallet">How to connect a hardware wallet to Metamask</a></p>
+
+                        <p><i>*Note: Ensure that “contract data” is enabled in the Ethereum app on the device.</i></p>
+
+                        <p><b>Q : Which browser should I use?</b></p>
+
+                        <p>We recommend Google Chrome.</p>
+
+                        <p><b>Q : Can I end my lock-up period early?</b></p>
+
+                        <p>No, it’s not possible to modify the smart contract. Please plan accordingly.</p>
+
+                        <p><b>Q : What if I want to run my own validator node?</b></p>
+
+                        <p>Our mainet is currently in beta and there are very limited spots and support available to operators. You should only interact with the sidechain as a validator if you are an experienced user and can troubleshoot issues on your
+                            own.
+                        </p>
+
+                        <p>We are recommending that everyone use nordic_energy Pool Staking until the mainnet is out of Beta.</p>
+
+                        <p>If you'd like to learn more in the meantime, you can view the documentation to become a validator <a href="https://gitlab.com/nordic_energy/nordic_energy-maker/-/wikis/Join-Network-as-a-validator">here</a></p>
+
+                        <p><b>Q : What if I have additional questions?</b></p>
+
+                        <p>For general questions: <a href="https://t.me/nordicenergy">Community Channel</a> (Telegram)</p>
+                        <p>For LPS related questions: <a href="https://t.me/nordicenergystaking">Staking Channel</a> (Telegram)</p>
+                        <p>You can also reach out to us on <a href="https://twitter.com/nordic_energy_Block">Twitter</a></p>
+
+                        <p>Other useful links:
+                            <p><a href="https://www.nordic_energy.io/">Website</a><br/>
+                                <a href="https://t.me/Officialnordic_energyANN">Announcement Channel</a><br/>
+                                <a href="https://medium.com/nordic_energy-blog">Medium Blog</a><br/>
+                                <a href="https://token-bridge.nordic_energy.io/">Token bridge</a><br/>
+                                <a href="https://nordicenergy.io/docs/nordic_energy_Whitepaper.pdf">Whitepaper</a><br/>
+                                <a href="https://www.nordic_energy.io/docs/nordic_energy_TechnicalWhitePaper.pdf">Technical Paper</a></p>
+
+                            <br/>
+
+                    </div>
+                </div>
+            </section>
+            <!-- End: Content -->
+        </section>
+    </div>
+    <!-- End: Main -->
+
+    <script src="{% static 'js/jquery-3.3.1.slim.min.js' %}" type="text/javascript" />
+    <script src="{% static 'css/assets/js/bootstrap/bootstrap.min.js' %}" type="text/javascript" />
+</body>
+
+</html>

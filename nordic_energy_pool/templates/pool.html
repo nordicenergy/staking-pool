@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>nordic_energy - Staking Pools 2.0</title>
+    <meta content="nordic_energy-pool" name="keywords">
+    <meta content="nordic_energy-pool - Staking Pool" name="description">
+    <meta content="nordic_energy-pool" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Font CSS (Via CDN) -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css">
+    <!-- Theme CSS -->
+    <link href="{% static 'css/assets/skin/default_skin/css/theme.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link href="{% static 'css/vendor/plugins/bstour/bootstrap-tour.css' %}" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link href="{% static 'css/pool.css' %}" rel="stylesheet" type="text/css">
+    <!-- Plugin CSS -->
+    <link rel="icon" href="https://www.nordic_energy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
+    <script type="text/javascript" src="{% static 'js/pnglib.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/identicon.js' %}"></script>
+    <link rel="shortcut icon" href="https://nordic_energy.io/img/favicon-32x32.png" />
+</head>
+
+<body class="dashboard-page sb-l-o sb-r-c sb-top" style="min-height: 0px!important;">
+    <!-- Start: Main -->
+    <div id="main" style="min-height: 0px!important;">
+        <!-- Start: Header -->
+        <header class="navbar navbar-fixed-top" style="background-color: #051a2d">
+            <div class="navbar-branding" style="background-color: #b38f00 !important;text-align: center">
+                <img style="height:60px;" src="{% static 'images/nordic_energy_logo.png' %}" title="nordic_energy">
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="networkLi" style="margin-top: 20px!important;color: lightgrey;display: none">
+                    <p><span class="networkName">Network: Ropsten</span></p>
+                </li>
+                <li style="margin-top: 14px!important;color: lightgrey;margin-left: 25px!important">
+                    <p><img style="padding-bottom: 3px" alt="avatar" class="mw30 br64 identicon mr10" src="{% static 'images/ether.png' %}"> <span class="account">Unlock your wallet</span></p>
+                </li>
+            </ul>
+        </header>
+        <!-- End: Header -->
+        <!-- Start: Sidebar -->
+        <aside class="nano nano-success affix sidebar-light" id="sidebar_left">
+            <div class="nano-content">
+                <!-- sidebar menu -->
+                <ul class="nav sidebar-menu">
+                    <li class="sidebar-label pt20">Management</li>
+                    <li>
+                        <a class="accordion-toggle menu-open" href="/pools/"><span class="fa fa-users"></span> <span class="sidebar-title">Pool Staking</span> <span class="label label-rounded label-success">2</span></a>
+                        <ul class="nav sub-nav">
+                            <li {% if 'nordic_energy-pool/' in request.path %}class="active" {% endif %}>
+                                <a href="/nordic_energy-pool/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> nordic_energy Pool
+                                </a>
+                            </li>
+                            <li {% if 'nordic_energy-pool2/' in request.path %}class="active" {% endif %}>
+                                <a href="/nordic_energy-pool2/" style="padding-bottom: 10px;padding-top: 10px">
+                                    <span class="fa fa-circle-o"></span> nordic_energy Pool 2
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/balances/"><span class="glyphicon glyphicon-usd"></span> <span class="sidebar-title">Balances</span></a>
+                    </li>
+                    <li>
+                        <a href="/history/"><span class="glyphicon glyphicon-list-alt"></span> <span class="sidebar-title">History</span></a>
+                    </li>
+                    <li class="sidebar-label pt20">Information</li>
+                    <li>
+                        <a target="_blank" href="https://medium.com/nordic_energy-blog/getting-started-with-nordic_energy-pool-staking-how-to-deposit-733ff18cb8f3"><span class="glyphicon glyphicon-info-sign"></span> <span class="sidebar-title">Staking Deposit Tutorial</span></a>
+                    </li>
+                    <li>
+                        <a href="/faq/"><span class="glyphicon glyphicon-question-sign"></span> <span class="sidebar-title">F.A.Q.</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Start: Content-Wrapper -->
+        <!-- Start: Content-Wrapper -->
+        <section id="content_wrapper">
+            <header class="hidden-xs" id="topbar">
+                <div class="topbar-left">
+                    <ol class="breadcrumb">
+                        <li class="crumb-active">
+                            <a href="/">Pool Staking</a>
+                        </li>
+                        <li class="crumb-trail">
+                            {% if 'nordic_energy-pool/' in request.path %}
+                            <a href="/nordic_energy-pool/">nordic_energy Pool</a> {% else %}
+                            <a href="/nordic_energy-pool2/">nordic_energy Pool 2</a> {% endif %}
+                        </li>
+                    </ol>
+                </div>
+            </header>
+            <!-- Begin: Content -->
+            <section class="table-layout animated fadeIn" id="content">
+                <!-- begin: .tray-center -->
+                <div class="tray tray-center p20 va-t posr">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if 'nordic_energy-pool/' in request.path %}
+                            <h2>nordic_energy's official staking pool for the <a href="https://energysidechain.nordic_energy.io/" target="_blank">Energy Sidechain</a>
+                                <a style="background-color: orange;" href="/nordic_energy-pool/deposit/" class="btn btn-info ml10"><i class="fa fa-plus mr10"></i>New Deposit</a></h2>
+                            {% else %}
+                            <h2>nordic_energy's official staking pool #2 for the <a href="https://energysidechain.nordic_energy.io/" target="_blank">Energy Sidechain</a>
+                                <a style="background-color: orange;" href="/nordic_energy-pool2/deposit/ " class="btn btn-info ml10 "><i class="fa fa-plus mr10 "></i>New Deposit</a></h2>
+                            {% endif %}
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-2 ">
+                            <div class="panel panel-tile text-center " style="opacity: 50% ">
+                                <div class="panel-body " style="background-color: forestgreen ">
+                                    <h1 class="fs35 mbn " style="color:white ">Active</h1>
+                                    <h6 class="text-white ">STATE</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 ">
+                            <div class="panel panel-tile text-center ">
+                                <div class="panel-body " style="background-color: lightgrey ">
+                                    <h1 class="fs35 mbn totalStakers "><img src="{% static 'images/loading.svg' %} " /></h1>
+                                    <h6 class="text-white ">STAKERS</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 ">
+                            <div class="panel panel-tile text-center ">
+                                <div class="panel-body " style="background-color: lightgrey ">
+                                    <h1 class="fs35 mbn totalStakes "><img src="{% static 'images/loading.svg' %} " /></h1>
+                                    <h6 class="text-white ">TOTAL STAKES</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 ">
+                            <div class="panel panel-tile text-center ">
+                                <div class="panel-body " style="background-color: lightgrey ">
+                                    <h1 class="fs35 mbn totalStaked "><img src="{% static 'images/loading.svg' %} " /></h1>
+                                    <h6 class="text-white ">TOTAL STAKED</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 ">
+                            <div class="panel panel-tile text-center ">
+                                <div class="panel-body " style="background-color: lightgrey ">
+                                    <h1 class="fs35 mbn ">5%</h1>
+                                    <h6 class="text-white ">FEES</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </div>
+    <!-- End: Main -->
+
+    {% csrf_token %}
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js " integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin=" anonymous "></script>
+
+
+    <script type="text/javascript ">
+        if (typeof window.ethereum !== 'undefined') {
+            window.ethereum.enable();
+            const web3 = new Web3(window.ethereum);
+            web3.version.getNetwork((err, netId) => {
+                switch (netId) {
+                    case "1 ":
+                        break
+                    case "2 ":
+                        $('.networkName').html('Network: Morden');
+                        $('.networkLi').show()
+                        break
+                    case "3 ":
+                        $('.networkName').html('Network: Ropsten');
+                        $('.networkLi').show()
+                        break
+                    default:
+                        $('.networkName').html('Network: Unknown');
+                        $('.networkLi').show()
+                }
+            });
+
+            web3.eth.getAccounts((err, accounts) => {
+                if (err) {
+                    throw err;
+                }
+                if (accounts.length == 0) {
+                    console.log('Locked');
+                } else {
+                    document.getElementsByClassName('account')[0].innerHTML = accounts[0].substring(0, 6) + '...' + accounts[0].substring(38, 42);
+                    const data = new Identicon(accounts[0]).toString();
+                    $('.identicon').attr('src', 'data:image/png;base64,' + data);
+                }
+            });
+        } else {
+            console.log('Unavailable');
+        }
+    </script>
+
+    <script src="{% static 'js/abi.js' %} " type="text/javascript ">
+    </script>
+
+    <script type="text/javascript ">
+        const web3 = new Web3(window.ethereum);
+        const MyContract = web3.eth.contract(JSON.parse(contractInfoAbi));
+        const contractAddress = '{{ contractAddress }}';
+        const contractInstance = MyContract.at(contractAddress);
+
+        function addMilesSeparator(num) {
+            return num.toLocaleString();
+        }
+
+        function updateValues() {
+            contractInstance.getTotalInStake({}, function(err, data) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    const total = parseInt(data.toString(10));
+                    const zerosPadding = 1000000000000000000;
+                    const totalInLit = total / zerosPadding;
+                    document.getElementsByClassName('totalStaked')[0].innerHTML = addMilesSeparator(parseInt(totalInLit.toString().split('.')[0])) + ' LIT';
+                }
+            });
+
+            try {
+                contractInstance.getTotalStakers({}, function(err, data) {
+                    if (err) {
+                        console.log(err);
+                        document.getElementsByClassName('totalStakers')[0].innerHTML = '0';
+                    } else {
+                        document.getElementsByClassName('totalStakers')[0].innerHTML = data;
+                    }
+                });
+
+            } catch {
+                document.getElementsByClassName('totalStakers')[0].innerHTML = '0';
+            }
+
+            try {
+                contractInstance.getTotalStakes({}, function(err, data) {
+                    if (err) {
+                        console.log(err);
+                        document.getElementsByClassName('totalStakes')[0].innerHTML = '0';
+                    } else {
+                        document.getElementsByClassName('totalStakes')[0].innerHTML = data;
+                    }
+                });
+
+            } catch (e) {
+                console.log(e);
+                document.getElementsByClassName('totalStakes')[0].innerHTML = '0';
+            }
+        }
+
+        updateValues();
+    </script>
+</body>
+
+</html>
