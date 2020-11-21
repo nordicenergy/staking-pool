@@ -1,6 +1,6 @@
-# Nordic Energy Staking Pool
+# Lition Staking Pool
 
-This repository contains the UI for Nordic Energy's Staking Pool, which was built in Django. It also contains the Solidity smart Contract that represents each staking pool and the Truffle code to deploy it.
+This repository contains the UI for Lition's Staking Pool, which was built in Django. It also contains the Solidity smart Contract that represents each staking pool and the Truffle code to deploy it.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ This repository contains the UI for Nordic Energy's Staking Pool, which was buil
 
 Modify `settings.py` to complete the database settings, a `SECRET_KEY`, and the API Key for Infura. For the database you can use MySQL, PSQL or SQLite (among others). 
 
-Enter the `nordic_energy_pool` folder and Use the following commands to install all the necessary libraries (we recommend you to use a virtual environment for this), create the migrations to generate the database tables and run these migrations.
+Enter the `lition_pool` folder and Use the following commands to install all the necessary libraries (we recommend you to use a virtual environment for this), create the migrations to generate the database tables and run these migrations.
 
 ```
  pip3 install -r requirements.txt

@@ -17,7 +17,7 @@
     <!-- Plugin CSS -->
     <link href="{% static 'css/vendor/plugins/bstour/bootstrap-tour.css' %}" rel="stylesheet" type="text/css">
     <!-- Favicon -->
-    <link rel="icon" href="https://www.staking.nordicenergy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://staking.nordicenergy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
     <script type="text/javascript" src="{% static 'js/pnglib.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/identicon.js' %}"></script>
     <link rel="shortcut icon" href="https://staking.nordicenergy.io/img/favicon-32x32.png" />
@@ -27,7 +27,7 @@
     <!-- Start: Main -->
     <div id="main" style="min-height: 0px!important;">
         <!-- Start: Header -->
-        <header class="navbar navbar-fixed-top" style="background-color: #051a2d">
+        <header class="navbar navbar-fixed-top" style="background-color: #1b1b1b">
             <div class="navbar-branding" style="background-color: #b38f00 !important;text-align: center">
                 <img style="height:60px;" src="{% static 'images/nordic_energy_logo.png' %}" title="nordic_energy">
             </div>
@@ -328,20 +328,20 @@
 
         function addRow(createdOn, totalStaked, lockupPeriod, compound, pending, rewards, isFinished, lockupFinishes, i, table) {
             let correctIndex = parseInt(i) + 1;
-            let button = '<a disabled="" style="background-color: steelblue;padding:5px" class="btn btn-primary ml10" href="#">Finish</a>';
-            let button2 = '<a disabled="" style="background-color: steelblue;padding:5px" class="btn btn-primary ml10" href="#">Withdraw</a>';
+            let button = '<a disabled="" style="background-color: orange;padding:5px" class="btn btn-primary ml10" href="#">Finish</a>';
+            let button2 = '<a disabled="" style="background-color: orange;padding:5px" class="btn btn-primary ml10" href="#">Withdraw</a>';
             if (isFinished) {
                 if (table == 2) {
-                    button = '<a style="background-color: steelblue;padding:5px" class="btn btn-primary ml10" href="javascript:finishStaking2(' + i + ')">Finish</a>';
+                    button = '<a style="background-color: orange;padding:5px" class="btn btn-primary ml10" href="javascript:finishStaking2(' + i + ')">Finish</a>';
                 } else {
-                    button = '<a style="background-color: steelblue;padding:5px" class="btn btn-primary ml10" href="javascript:finishStaking(' + i + ')">Finish</a>';
+                    button = '<a style="background-color: orange;padding:5px" class="btn btn-primary ml10" href="javascript:finishStaking(' + i + ')">Finish</a>';
                 }
             }
             if (rewards != '0 LIT') {
                 if (table == 2) {
-                    button2 = '<a style="background-color: steelblue;padding:5px" class="btn btn-primary ml10" href="javascript:withdrawRewards2(' + i + ')">Withdraw</a>';
+                    button2 = '<a style="background-color: orange;padding:5px" class="btn btn-primary ml10" href="javascript:withdrawRewards2(' + i + ')">Withdraw</a>';
                 } else {
-                    button2 = '<a style="background-color: steelblue;padding:5px" class="btn btn-primary ml10" href="javascript:withdrawRewards(' + i + ')">Withdraw</a>';
+                    button2 = '<a style="background-color: orange;padding:5px" class="btn btn-primary ml10" href="javascript:withdrawRewards(' + i + ')">Withdraw</a>';
                 }
             }
             const row = '<tr><td>' + correctIndex + '</td><td>' + compound + '</td><td>' + totalStaked + '</td><td>' + createdOn + '</td><td>' + lockupPeriod + ' </td><td>' + lockupFinishes + button + '</td><td>' + pending + '</td><td>' + rewards + button2 + '</td></tr>'

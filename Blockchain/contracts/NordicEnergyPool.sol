@@ -1,4 +1,4 @@
-pragma solidity >=0.5.12;
+pragma solidity >=0.5.17;
 
 interface IERC20 {
     function transfer(address to, uint256 value) external returns (bool);
@@ -175,11 +175,11 @@ library Date {
 }
 
 /**
- * @title   Lition Pool Contract
- * @author  Patricio Mosse
- * @notice  This contract is used for staking LIT (ERC20) tokens to support a validator running in the Lition blockchain network and distribute rewards.
+ * @title   Nordic Energy Pool Contract
+ * @author  Nordic Energy
+ * @notice  This contract is used for staking Nordic Energy (ERC20) tokens to support a validator running in the NordicEnergy blockchain network and distribute rewards.
  **/
-contract LitionPool {
+contract NordicEnergyPool {
     using SafeMath for uint256;
 
     /**************************************************** Events **************************************************************/
@@ -198,7 +198,7 @@ contract LitionPool {
     /**************************************************** Vars and structs **************************************************************/
     
     address public owner;
-    IERC20 litionToken;
+    IERC20 NordicEnergyToken;
     bool public paused = false;
 
     struct Stake {
@@ -220,9 +220,9 @@ contract LitionPool {
         _;
     }
 
-    constructor(IERC20 _litionToken) public {
+    constructor(IERC20 _NordicEnergyToken) public {
         owner = msg.sender;
-        litionToken = _litionToken;
+        NordicEnergyToken = _NordicEnergyToken;
     }
 
     function _transferOwnership(address newOwner) public onlyOwner {
@@ -243,8 +243,8 @@ contract LitionPool {
     function createNewStake(uint256 _amount, uint8 _lockupPeriod, bool _compound) public {
         require(!paused, "New stakes are paused");
         require(_isValidLockupPeriod(_lockupPeriod), "The lockup period is invalid");
-        require(_amount >= 5000000000000000000000, "You must stake at least 5000 LIT");
-        require(IERC20(litionToken).transferFrom(msg.sender, address(this), _amount), "Couldn't take the LIT from the sender");
+        require(_amount >= 5000000000000000000000, "You must stake at least 5000 NET");
+        require(IERC20(NordicEnergyToken).transferFrom(msg.sender, address(this), _amount), "Couldn't take the NET from the sender");
         
         Stake memory stake = Stake({createdOn: now, 
                                     totalStaked:_amount, 
@@ -297,7 +297,7 @@ contract LitionPool {
         uint256 total = stake.rewards;
         stake.rewards = 0;
 
-        require(litionToken.transfer(msg.sender, total));
+        require(NordicEnergyToken.transfer(msg.sender, total));
 
         emit RewardsWithdrawn(msg.sender, _index, total);
     }
@@ -306,7 +306,7 @@ contract LitionPool {
 
     function _accredit(address _staker, uint256 _index, uint256 _total) public onlyOwner {
         require(stakeListBySender[_staker].length > _index, "The stake doesn't exist");
-        require(IERC20(litionToken).transferFrom(msg.sender, address(this), _total), "Couldn't take the LIT from the sender");
+        require(IERC20(NordicEnergyToken).transferFrom(msg.sender, address(this), _total), "Couldn't take the NET from the sender");
 
         Stake storage stake = stakeListBySender[_staker][_index];
         require(!stake.finished, "The stake is already finished");
@@ -337,7 +337,7 @@ contract LitionPool {
             total = total.add(_totals[i]);
         }
         
-        require(IERC20(litionToken).transferFrom(msg.sender, address(this), total), "Couldn't take the LIT from the sender");
+        require(IERC20(NordicEnergyToken).transferFrom(msg.sender, address(this), total), "Couldn't take the NET from the sender");
 
         for (uint256 index = 0; index < _totals.length; index++) {
             Stake storage stake = stakeListBySender[_staker][index];
@@ -371,14 +371,14 @@ contract LitionPool {
         emit StakeEnabledToBeFinished(_staker, _index);
     }
 
-    function _transferLITToVestingAccount(uint256 _total) public onlyOwner {
-        require(litionToken.transfer(msg.sender, _total));
+    function _transferNETToVestingAccount(uint256 _total) public onlyOwner {
+        require(NordicEnergyToken.transfer(msg.sender, _total));
 
         emit TransferredToVestingAccount(_total);
     }
     
-    function _extractLitSentByMistake(uint256 amount, address _sendTo) public onlyOwner {
-        require(litionToken.transfer(_sendTo, amount));
+    function _extractNETSentByMistake(uint256 amount, address _sendTo) public onlyOwner {
+        require(NordicEnergyToken.transfer(_sendTo, amount));
     }
 
     function _removeStaker(address _staker, uint256 _index) public onlyOwner {
@@ -469,7 +469,7 @@ contract LitionPool {
             _removeStakerByValue(_staker);
         }
         
-        require(litionToken.transfer(_staker, total));
+        require(NordicEnergyToken.transfer(_staker, total));
 
         return total;
     }

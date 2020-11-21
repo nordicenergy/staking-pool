@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>nordic_energy - Staking Pools 2.0</title>
+    <title>Nordic Energy - Staking Pools 2.0</title>
     <meta content="nordic_energy-pool" name="keywords">
     <meta content="nordic_energy-pool - Staking Pool" name="description">
     <meta content="nordic_energy-pool" name="author">
@@ -19,17 +19,17 @@
     <!-- Favicon -->
     <link href="{% static 'css/pool.css' %}" rel="stylesheet" type="text/css">
     <!-- Plugin CSS -->
-    <link rel="icon" href="https://www.nordic_energy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://staking.nordicenergy.io/wp-content/uploads/2018/04/cropped-nordic_energy_icon_secondary-01-32x32.png" sizes="32x32" />
     <script type="text/javascript" src="{% static 'js/pnglib.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/identicon.js' %}"></script>
-    <link rel="shortcut icon" href="https://nordic_energy.io/img/favicon-32x32.png" />
+    <link rel="shortcut icon" href="https://staking.nordicenergy.io/img/favicon-32x32.png" />
 </head>
 
 <body class="dashboard-page sb-l-o sb-r-c sb-top" style="min-height: 0px!important;">
     <!-- Start: Main -->
     <div id="main" style="min-height: 0px!important;">
         <!-- Start: Header -->
-        <header class="navbar navbar-fixed-top" style="background-color: #051a2d">
+        <header class="navbar navbar-fixed-top" style="background-color: #222222">
             <div class="navbar-branding" style="background-color: #b38f00 !important;text-align: center">
                 <img style="height:60px;" src="{% static 'images/nordic_energy_logo.png' %}" title="nordic_energy">
             </div>
@@ -54,12 +54,12 @@
                         <ul class="nav sub-nav">
                             <li {% if 'nordic_energy-pool/' in request.path %}class="active" {% endif %}>
                                 <a href="/nordic_energy-pool/" style="padding-bottom: 10px;padding-top: 10px">
-                                    <span class="fa fa-circle-o"></span> nordic_energy Pool
+                                    <span class="fa fa-circle-o"></span> Nordic Energy Pool
                                 </a>
                             </li>
                             <li {% if 'nordic_energy-pool2/' in request.path %}class="active" {% endif %}>
                                 <a href="/nordic_energy-pool2/" style="padding-bottom: 10px;padding-top: 10px">
-                                    <span class="fa fa-circle-o"></span> nordic_energy Pool 2
+                                    <span class="fa fa-circle-o"></span> Nordic Energy Pool 2
                                 </a>
                             </li>
                         </ul>
@@ -91,8 +91,8 @@
                         </li>
                         <li class="crumb-trail">
                             {% if 'nordic_energy-pool/' in request.path %}
-                            <a href="/nordic_energy-pool/">nordic_energy Pool</a> {% else %}
-                            <a href="/nordic_energy-pool2/">nordic_energy Pool 2</a> {% endif %}
+                            <a href="/nordic_energy-pool/">Nordic Energy Pool</a> {% else %}
+                            <a href="/nordic_energy-pool2/">Nordic Energy Pool 2</a> {% endif %}
                         </li>
                     </ol>
                 </div>
@@ -104,10 +104,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             {% if 'nordic_energy-pool/' in request.path %}
-                            <h2>nordic_energy's official staking pool for the <a href="https://energysidechain.nordic_energy.io/" target="_blank">Energy Sidechain</a>
+                            <h2>nordic_energy's official staking pool for the <a href="https://energysidechain.nordicenergy.io/" target="_blank">Energy Sidechain</a>
                                 <a style="background-color: orange;" href="/nordic_energy-pool/deposit/" class="btn btn-info ml10"><i class="fa fa-plus mr10"></i>New Deposit</a></h2>
                             {% else %}
-                            <h2>nordic_energy's official staking pool #2 for the <a href="https://energysidechain.nordic_energy.io/" target="_blank">Energy Sidechain</a>
+                            <h2>nordic_energy's official staking pool #2 for the <a href="https://energysidechain.nordicenergy.io/" target="_blank">Energy Sidechain</a>
                                 <a style="background-color: orange;" href="/nordic_energy-pool2/deposit/ " class="btn btn-info ml10 "><i class="fa fa-plus mr10 "></i>New Deposit</a></h2>
                             {% endif %}
                             <hr/>
@@ -116,7 +116,7 @@
                     <div class="row ">
                         <div class="col-md-2 ">
                             <div class="panel panel-tile text-center " style="opacity: 50% ">
-                                <div class="panel-body " style="background-color: forestgreen ">
+                                <div class="panel-body " style="background-color: orange ">
                                     <h1 class="fs35 mbn " style="color:white ">Active</h1>
                                     <h6 class="text-white ">STATE</h6>
                                 </div>
@@ -184,7 +184,7 @@
                         $('.networkLi').show()
                         break
                     default:
-                        $('.networkName').html('Network: Unknown');
+                        $('.networkName').html('Network: PowerChain');
                         $('.networkLi').show()
                 }
             });
@@ -227,7 +227,7 @@
                     const total = parseInt(data.toString(10));
                     const zerosPadding = 1000000000000000000;
                     const totalInLit = total / zerosPadding;
-                    document.getElementsByClassName('totalStaked')[0].innerHTML = addMilesSeparator(parseInt(totalInLit.toString().split('.')[0])) + ' LIT';
+                    document.getElementsByClassName('totalStaked')[0].innerHTML = addMilesSeparator(parseInt(totalInLit.toString().split('.')[0])) + ' NET';
                 }
             });
 
@@ -265,4 +265,4 @@
     </script>
 </body>
 
-</html>
+</html>E
