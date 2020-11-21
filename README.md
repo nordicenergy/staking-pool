@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/nordicenergy/staking-pool)
+
 # Nordic Energy Staking Pool
 
 This repository contains the UI for Nordic Energy's Staking Pool, which was built in Django. It also contains the Solidity smart Contract that represents each staking pool and the Truffle code to deploy it.
